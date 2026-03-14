@@ -2,7 +2,7 @@
 // Mengambil halaman aktif dari URL, default adalah dashboard
 $currentPage = $_GET['page'] ?? 'dashboard';
 // Mengambil data session untuk proteksi menu
-$userRole = $_SESSION['role'] ?? 'superadmin';
+$userRole = $_SESSION['role'] ?? 'sdi'; 
 ?>
 
 <aside id="sidebar" class="fixed lg:relative w-64 md:w-64 lg:w-64 bg-denim-800 border-r border-slate-700 flex flex-col transition-all duration-300 z-40 h-screen transform -translate-x-full lg:translate-x-0 shrink-0">
@@ -32,6 +32,17 @@ $userRole = $_SESSION['role'] ?? 'superadmin';
                 <i class="fa-solid fa-chart-pie text-lg <?= $currentPage == 'dashboard' ? 'text-neon-blue' : 'group-hover:text-neon-blue' ?>"></i>
             </div>
             <span class="font-medium sidebar-text transition-opacity duration-300">Dashboard</span>
+        </a>
+
+        <!-- Profil Saya (Dinamis untuk semua User) -->
+        <a href="?page=profil"
+            class="flex items-center gap-4 px-3 py-3 transition-all group overflow-hidden whitespace-nowrap rounded-xl 
+           <?= $currentPage == 'profil' ? 'bg-slate-700/50 text-white border border-slate-600/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'text-slate-400 hover:text-white hover:bg-slate-800' ?>"
+            title="Profil Saya">
+            <div class="sidebar-link-icon">
+                <i class="fa-solid fa-user-circle text-lg <?= $currentPage == 'profil' ? 'text-neon-indigo' : 'group-hover:text-neon-indigo' ?>"></i>
+            </div>
+            <span class="font-medium sidebar-text transition-opacity duration-300">Profil Saya</span>
         </a>
 
         <!-- Data Pegawai (Superadmin & Admin SDI Only) -->
@@ -82,7 +93,8 @@ $userRole = $_SESSION['role'] ?? 'superadmin';
         </a>
         <?php endif; ?>
 
-        
+        <!-- Manajemen User (Superadmin Only) -->
+        <?php if ($userRole === 'superadmin'): ?>
         <a href="?page=manajemen_user"
             class="flex items-center gap-4 px-3 py-3 transition-all group overflow-hidden whitespace-nowrap rounded-xl 
             <?= $currentPage == 'manajemen_user' ? 'bg-slate-700/50 text-white border border-slate-600/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'text-slate-400 hover:text-white hover:bg-slate-800' ?>"
@@ -92,7 +104,7 @@ $userRole = $_SESSION['role'] ?? 'superadmin';
             </div>
             <span class="font-medium sidebar-text transition-opacity duration-300">Manajemen User</span>
         </a>
-        
+        <?php endif; ?>
 
         <!-- Presensi & Cuti -->
         <a href="?page=presensi-cuti"
@@ -121,7 +133,7 @@ $userRole = $_SESSION['role'] ?? 'superadmin';
     <div class="p-4 border-t border-slate-700">
         <a href="?page=pengaturan"
             class="flex items-center gap-4 px-3 py-3 transition-all group overflow-hidden whitespace-nowrap rounded-xl 
-           <?= $currentPage == 'pengaturan' ? 'bg-slate-700/50 text-white border border-slate-600/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'text-slate-400 hover:text-white hover:bg-slate-700' ?>"
+           <?= $currentPage == 'pengaturan' ? 'bg-slate-700/50 text-white border border-slate-600/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'text-slate-400 hover:text-white hover:bg-slate-800' ?>"
             title="Pengaturan">
             <div class="sidebar-link-icon">
                 <i class="fa-solid fa-gear text-lg <?= $currentPage == 'pengaturan' ? 'text-neon-indigo' : 'group-hover:text-neon-indigo' ?>"></i>

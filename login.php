@@ -65,11 +65,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-neon-blue/10 rounded-full blur-[120px]"></div>
 
     <div class="w-full max-w-md z-10">
-        <!-- Logo & Judul Branding Baru -->
-        <div class="flex items-center gap-4 mb-10 px-2">
+        <!-- Logo & Judul Branding -->
+        <div class="flex items-center gap-4 mb-10 px-2 justify-center md:justify-start">
             <!-- Logo Box -->
-            <div class="inline-flex shrink-0 items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-indigo to-neon-blue shadow-lg">
-                <i class="fa-solid fa-mosque text-white text-3xl"></i>
+            <div class="inline-flex shrink-0 items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-neon-indigo to-neon-blue shadow-lg">
+                <i class="fa-solid fa-mosque text-white text-2xl md:text-3xl"></i>
             </div>
             <!-- Text Branding -->
             <div class="flex flex-col">
@@ -83,9 +83,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
         </div>
 
         <!-- Card Login -->
-        <div class="glass-effect rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden">
+        <div class="glass-effect rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden border-t border-white/10">
             <h2 class="text-xl font-bold text-white mb-2">Selamat Datang</h2>
-            <p class="text-slate-400 text-sm mb-8">Silakan masuk untuk mengelola data operasional.</p>
+            <p class="text-slate-400 text-sm mb-8 italic text-balance">Silakan masuk untuk mengelola data operasional.</p>
 
             <!-- Notifikasi Error -->
             <?php if (isset($_GET['error'])): ?>
@@ -121,7 +121,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                         <input type="password" id="passwordField" name="password" required
                             class="w-full bg-denim-950/50 border border-slate-700 rounded-2xl pl-12 pr-12 py-4 text-white focus:ring-2 focus:ring-neon-blue focus:border-transparent outline-none transition-all placeholder:text-slate-700"
                             placeholder="••••••••">
-                        <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 hover:text-white transition-colors">
+                        <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 hover:text-white transition-colors focus:outline-none">
                             <i id="eyeIcon" class="fa-solid fa-eye-slash"></i>
                         </button>
                     </div>
@@ -133,6 +133,16 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                     Masuk Ke Sistem <i class="fa-solid fa-arrow-right-long ml-2"></i>
                 </button>
             </form>
+
+            <!-- Link ke Halaman Register -->
+            <div class="mt-8 pt-6 border-t border-slate-800 text-center">
+                <p class="text-xs text-slate-500 font-medium">
+                    Belum memiliki akun? 
+                    <a href="register.php" class="text-neon-blue font-bold hover:text-neon-indigo transition-colors ml-1 uppercase tracking-wider">
+                        Daftar Sekarang
+                    </a>
+                </p>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -141,7 +151,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                 &copy; <?= date('Y') ?> Ponpes Hidayatullah Balikpapan
             </p>
             <div class="mt-2 px-3 py-1 bg-denim-900 border border-slate-800 rounded-full">
-                <span class="text-[9px] text-slate-500 font-mono">Build v1.0.1 - Stable</span>
+                <span class="text-[9px] text-slate-500 font-mono italic">Build v1.1.0 - Digital SDI</span>
             </div>
         </div>
     </div>
